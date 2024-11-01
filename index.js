@@ -19,12 +19,12 @@ function getrepo() {
   );
 }
 
-function createComment(octokit, repoInfo, issueNumber, comment) {
+function createComment(octokit, repoInfo, issueNumber, body) {
   const { data: comment } = octokit.rest.issues.createComment({
     owner: repoInfo.owner,
     repo: repoInfo.repo,
     issue_number: issueNumber,
-    comment,
+    body,
   });
   core.info(`Created comment id '${comment.id}' on issue '${issueNumber}'.`);
   return comment.id;
