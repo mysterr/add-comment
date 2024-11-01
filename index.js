@@ -32,10 +32,14 @@ function createComment(octokit, repoInfo, issueNumber, body) {
 
 try {
   const issueNumber = core.getInput("issue-number");
+  if (!issueNumber) {
+    throw new Error(
+        "issue-number is required"
+      )
+  }
   const comment = core.getInput("comment");
   const token = core.getInput("token");
   const octokit = github.getOctokit(token);
-  console.log(`issueNumber: ${issueNumber}!`);
   console.log(`comment: ${comment}!`);
 
   const repoInfo = getrepo();
