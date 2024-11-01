@@ -19,10 +19,10 @@ function getrepo() {
   );
 }
 
-function createComment(octokit, owner, repo, issueNumber, body) {
+function createComment(octokit, owner, repoInfo, issueNumber, body) {
   const { data: comment } = octokit.rest.issues.createComment({
-    owner: owner,
-    repo: repo,
+    owner: repoInfo.owner,
+    repo: repoInfo.repo,
     issue_number: issueNumber,
     body,
   });
@@ -37,8 +37,9 @@ try {
   const octokit = github.getOctokit(token);
   console.log(`comment: ${comment}!`);
 
-  const [owner, repo] = getrepo();
-  const commentId = createComment(octokit, owner, repo, issueNumber, comment);
+  const repoInfo = getrepo();
+  console.log(repoInfo);
+  const commentId = createComment(octokit, repoInfo, issueNumber, comment);
 
   core.setOutput("comment-id", commentId);
 } catch (error) {
