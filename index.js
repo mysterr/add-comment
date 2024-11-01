@@ -3,10 +3,12 @@ const github = require("@actions/github");
 
 function getrepo() {
   if (process.env.GITHUB_REPOSITORY) {
+    console.log('GITHUB_REPOSITORY')
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
     return { owner, repo };
   }
   if (this.payload.repository) {
+    console.log('payload.repository')
     return {
       owner: this.payload.repository.owner.login,
       repo: this.payload.repository.name,
