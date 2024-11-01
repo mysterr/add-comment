@@ -14,7 +14,7 @@ function getrepo() {
             repo: this.payload.repository.name
         };
     }
-    throw new Error("context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'");
+    throw new Error("required a GITHUB_REPOSITORY environment variable like 'owner/repo'");
 }
 
 function createComment(owner, repo, issueNumber, body) {
