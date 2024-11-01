@@ -26,8 +26,8 @@ function createComment(octokit, repoInfo, issueNumber, body) {
     issue_number: issueNumber,
     body,
   });
-  core.info(`Created comment id '${comment.id}' on issue '${issueNumber}'.`);
-  return comment.id;
+  core.info(`Created comment id '${data.id}' on issue '${issueNumber}'.`);
+  return data.id;
 }
 
 try {
