@@ -35,6 +35,7 @@ try {
   const comment = core.getInput("comment");
   const token = core.getInput("token");
   const octokit = github.getOctokit(token);
+  console.log(`issueNumber: ${issueNumber}!`);
   console.log(`comment: ${comment}!`);
 
   const repoInfo = getrepo();
