@@ -32,7 +32,7 @@ try {
   const issueNumber = core.getInput("issue-number");
   const comment = core.getInput("comment");
   const token = core.getInput("token");
-  const octokit = github.getOctokit();
+  const octokit = github.getOctokit(token);
   console.log(`comment: ${comment}!`);
 
   const [owner, repo] = getrepo();
